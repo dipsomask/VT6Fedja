@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>МАГАЗИН</title>
+    <script>
+        function updateValues() {
+          fetch('/get_values')
+            .then(response => response.json())
+            .then(data => {
+              document.getElementById('prod1').textContent = data[0];
+              document.getElementById('prod2').textContent = data[1];
+              document.getElementById('prod3').textContent = data[2];
+              document.getElementById('prod4').textContent = data[3];
+            });
+        }
+
+        setInterval(updateValues, 5000);
+    </script>
+</head>
+<body>
+    <form action="#" method="POST">
+        <label>All products:</label><br>
+        <label>Infinix Hot 30 Smartphone ({{prod1}})</label><br>
+        <label>Wireless headphones hoco W35 MAX ({{prod2}})</label><br>
+        <label>Case for iPhone 11 ({{prod3}})</label><br>
+        <label>Electric street garland 12m ({{prod4}})</label><br>
+        <label>Select a product:</label>
+        <select name="product" id="product">
+            <option value="Infinix Hot 30 Smartphone">Infinix Hot 30 Smartphone ({{prod1}})</option>
+            <option value="Wireless headphones hoco W35 MAX">Wireless headphones hoco W35 MAX ({{prod2}})</option>
+            <option value="Case for iPhone 11">Case for iPhone 11 ({{prod3}})</option>
+            <option value="Electric street garland 12m">Electric street garland 12m ({{prod4}})</option>
+        </select><br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
+        <button type="submit">Buy</button>
+        <small>{{error}}</small>
+    </form>
+</body>
+</html>
