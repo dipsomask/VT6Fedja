@@ -5,7 +5,7 @@ app = Flask(__name__, template_folder='C:/Users/alexe/Documents/PyCharm Communit
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    error = " "
+    error = ""
     if request.method == 'POST':
         product = request.form['product']
         new_value = request.form['quantity']
@@ -29,7 +29,7 @@ def index():
         with open("data/storage.txt", "r") as file:
             data = file.readlines()
         prod = []
-        # Обходим каждую строку
+
         for line in data:
             # Разделяем строку по знаку "-" и берем вторую часть (после знака "-")
             value = line.split('-')[1].strip()
